@@ -1,0 +1,38 @@
+= interposition-demo
+
+This is the function interposition demo project
+
+== About interposition
+
+. https://jayconrod.com/posts/23/tutorial-function-interposition-in-linux[Tutorial: Function Interposition in Linux]
+
+== How to build
+
+. Clone the project
+. Run cmake
++
+[source,bash]
+----
+$ cmake --preset=dev
+----
+. Go to build directory:
++
+[source,base]
+----
+$ cd build/dev
+----
+. Run demo:
++
+[source,bash,subs="quotes"]
+----
+$ cmake --build build/dev/ --target _demo_
+----
+Where _demo_ is one of:
+.. `run-libc-demo` -- interposing `puts` function from libc
+.. `run-user-library-demo` -- interposing `getAnswer` function from link:libanswer/Answer.cpp[`libanswer`]
+.. `run-application-demo` -- a try to interpose a function defined in the same compilation unit.
+Won't work, see https://stackoverflow.com/q/36968287/6486622[Why doesn't gcc reference the PLT for function calls?]
+
+== Other notes
+
+* The project is initialized with https://github.com/friendlyanon/cmake-init[cmake-init]

@@ -1,10 +1,10 @@
 #include <Answer.hpp>
 
-namespace InterpositionDemo::Answer {
+namespace interposition_demo::answer {
 
-extern "C" int32_t getAnswer() {
+extern "C" auto getAnswer() -> int32_t {
 	static constexpr int32_t ANSWER = 42;
 	return ANSWER;
 }
 
-}
+} //namespace interposition_demo::answer

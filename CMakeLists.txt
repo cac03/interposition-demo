@@ -1,14 +1,33 @@
-cmake_minimum_required (VERSION 3.23)
+cmake_minimum_required(VERSION 3.14)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+include(cmake/prelude.cmake)
 
-project (interposition-demo)
+project(
+    interposition-demo
+    VERSION 0.1.0
+    DESCRIPTION "Interposition demo"
+    LANGUAGES CXX
+)
 
-add_subdirectory(interposer)
+include(cmake/project-is-top-level.cmake)
+include(cmake/variables.cmake)
+
+# ---- Developer mode ----
+
+if(NOT interposition-demo_DEVELOPER_MODE)
+  return()
+elseif(NOT PROJECT_IS_TOP_LEVEL)
+  message(
+      AUTHOR_WARNING
+      "Developer mode is intended for developers of interposition-demo"
+  )
+endif()
+
+include(cmake/dev-mode.cmake)
+
 add_subdirectory(libanswer)
+add_subdirectory(interposer)
 add_subdirectory(demos/libc)
-add_subdirectory(demos/user-library)
 add_subdirectory(demos/application)
+add_subdirectory(demos/user-library)
 

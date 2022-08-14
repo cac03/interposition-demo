@@ -1,5 +1,5 @@
-#include <stdio.h>
+#include <cstdio>
 
 auto main() -> int {
-	puts("Hi!");
+	std::puts("Hi!");
 }

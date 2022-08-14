@@ -3,11 +3,12 @@
 #include <cstdio>
 #include <Answer.hpp>
 
-extern "C" int32_t getAnswer() {
-	return 78;
+extern "C" auto getAnswer() -> int32_t {
+	static constexpr int32_t ANSWER = 78;
+	return ANSWER;
 }
 
-int main() {
+auto main() -> int {
 	auto answer = getAnswer();
 	std::cout << "The answer is '" << answer << "'" << std::endl;
 }

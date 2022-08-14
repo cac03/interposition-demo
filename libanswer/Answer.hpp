@@ -1,7 +1,7 @@
 #include <cstdint>
 
-namespace InterpositionDemo::Answer {
+namespace interposition_demo::answer {
 
-extern "C" int32_t getAnswer();
+extern "C" auto getAnswer() -> int32_t;
 
-}
+} // namespace interposition_demo::answer
